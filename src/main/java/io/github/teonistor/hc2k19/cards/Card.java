@@ -1,10 +1,20 @@
 package io.github.teonistor.hc2k19.cards;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+
 import static io.github.teonistor.hc2k19.cards.Kind.*;
 import static io.github.teonistor.hc2k19.cards.Suit.*;
+import static java.util.Arrays.*;
+import static java.util.stream.Collectors.toCollection;
 
 public enum Card {
-    C_A(Clubs, Ace),
     C_2(Clubs, Two),
     C_3(Clubs, Three),
     C_4(Clubs, Four),
@@ -17,7 +27,7 @@ public enum Card {
     C_J(Clubs, Jack),
     C_Q(Clubs, Queen),
     C_K(Clubs, King),
-    D_A(Diamonds, Ace),
+    C_A(Clubs, Ace),
     D_2(Diamonds, Two),
     D_3(Diamonds, Three),
     D_4(Diamonds, Four),
@@ -30,7 +40,7 @@ public enum Card {
     D_J(Diamonds, Jack),
     D_Q(Diamonds, Queen),
     D_K(Diamonds, King),
-    H_A(Hearts, Ace),
+    D_A(Diamonds, Ace),
     H_2(Hearts, Two),
     H_3(Hearts, Three),
     H_4(Hearts, Four),
@@ -43,7 +53,7 @@ public enum Card {
     H_J(Hearts, Jack),
     H_Q(Hearts, Queen),
     H_K(Hearts, King),
-    S_A(Spades, Ace),
+    H_A(Hearts, Ace),
     S_2(Spades, Two),
     S_3(Spades, Three),
     S_4(Spades, Four),
@@ -55,7 +65,8 @@ public enum Card {
     S_10(Spades, Ten),
     S_J(Spades, Jack),
     S_Q(Spades, Queen),
-    S_K(Spades, King);
+    S_K(Spades, King),
+    S_A(Spades, Ace);
 
     private final Suit suit;
     private final Kind kind;
@@ -75,5 +86,16 @@ public enum Card {
 
     public String toString() {
         return String.format("%s of %s", kind, suit);
+    }
+
+    public static Supplier<Card> getShuffledDeck() {
+        Integer[] shuffledIndexes = new Integer[values().length];
+        setAll(shuffledIndexes, i->i);
+        Collections.shuffle(asList(shuffledIndexes));
+
+        return stream(shuffledIndexes)
+            .map(i -> values()[i])
+            .collect(toCollection(LinkedList::new))
+            ::remove;
     }
 }

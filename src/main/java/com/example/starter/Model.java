@@ -41,7 +41,7 @@ public class Model {
     void run() {
 
         //Create a random and set its seed if you want your model to run the same each time
-        Random random = new Random(1);
+        Random random = new Random();
 
         //Use lines from your csv data file
         Data.CsvLine firstCsvLine = data.csvLines.get(0);

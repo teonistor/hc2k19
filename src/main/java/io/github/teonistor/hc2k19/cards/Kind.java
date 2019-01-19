@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import static java.util.Arrays.stream;
 
 public enum Kind {
-    Ace("A", 1),
     Two("2", 2),
     Three("3", 3),
     Four("4", 4),
@@ -18,7 +17,8 @@ public enum Kind {
     Ten("10", 10),
     Jack("J", 11),
     Queen("Q", 12),
-    King("K", 13);
+    King("K", 13),
+    Ace("A", 14);
 
     private final String shortString;
     private final int order;
