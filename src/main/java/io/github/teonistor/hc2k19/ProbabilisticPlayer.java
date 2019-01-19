@@ -1,11 +1,34 @@
 package io.github.teonistor.hc2k19;
 
 import io.github.teonistor.hc2k19.cards.Card;
-import io.github.teonistor.hc2k19.game.Game;
+import io.improbable.keanu.tensor.Tensor;
+import io.improbable.keanu.vertices.dbl.KeanuRandom;
+import io.improbable.keanu.vertices.generic.probabilistic.discrete.CategoricalVertex;
 
 public class ProbabilisticPlayer implements Player {
+
+    public ProbabilisticPlayer() {
+
+        CategoricalVertex<Card, Tensor<Card>> ccv = Card.getCategoricalVertex();
+
+
+        System.out.println(ccv.sample(new KeanuRandom()).scalar());
+        System.out.println(ccv.sample(new KeanuRandom()).scalar());
+        System.out.println(ccv.sample(new KeanuRandom()).scalar());
+        System.out.println(ccv.sample(new KeanuRandom()).scalar());
+        System.out.println(ccv.sample(new KeanuRandom()).scalar());
+        System.out.println(ccv.sample(new KeanuRandom()).scalar());
+        System.out.println(ccv.sample(new KeanuRandom()).scalar());
+        System.out.println(ccv.sample(new KeanuRandom()).scalar());
+
+//        IntegerVertex[] cards = new IntegerVertex[7];
+//        Arrays.setAll(cards, ignore -> new UniformIntVertex(0, 52));
+//
+//        BooleanVertex bv = new
+    }
+
     @Override
-    public void deal(Card a, Card b) {
+    public void deal(Card c) {
 
     }
 
@@ -15,12 +38,17 @@ public class ProbabilisticPlayer implements Player {
     }
 
     @Override
-    public void announce(Player other, Action action) {
+    public void announce(Player other, BidAction action) {
 
     }
 
     @Override
-    public void takeTurn(Game state) {
+    public void remind(int dolla) {
 
+    }
+
+    @Override
+    public BidAction takeTurn() {
+        return null;
     }
 }

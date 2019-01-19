@@ -1,5 +1,6 @@
 package io.github.teonistor.hc2k19;
 
+import io.github.teonistor.hc2k19.game.Game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +19,11 @@ public class Main extends Application {
 
 
     public static void main(String[] arg) {
-        launch(arg);
+
+        new Game(3).play();
+
+//        new ProbabilisticPlayer();
+
+//        launch(arg);
     }
 }

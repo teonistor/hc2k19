@@ -15,8 +15,8 @@ public class RandomPlayer implements Player {
     }
 
     @Override
-    public void deal(Card a, Card b) {
-        System.out.printf("%s was dealt %s and %s%n", name, a, b);
+    public void deal(Card c) {
+        System.out.printf("%s was dealt %s%n", name, c);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class RandomPlayer implements Player {
     }
 
     @Override
-    public void announce(Player other, Action action) {
+    public void announce(Player other, BidAction action) {
 
     }
 
@@ -35,8 +35,8 @@ public class RandomPlayer implements Player {
     }
 
     @Override
-    public Action takeTurn() {
-        return Action.values()[random.nextInt(Action.values().length)];
+    public BidAction takeTurn() {
+        return BidAction.values()[random.nextInt(BidAction.values().length)];
     }
 
     @Override public String toString(){
