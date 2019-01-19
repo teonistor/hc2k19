@@ -35,11 +35,4 @@ public enum Kind {
     public int getOrder() {
         return order;
     }
-
-    public static boolean areConsecutive(Kind... kinds) {
-        Set<Integer> orders = stream(kinds)
-            .map(Kind::getOrder)
-            .collect(Collectors.toSet());
-        // TODO
-    }
 }
