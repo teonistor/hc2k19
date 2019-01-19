@@ -1,5 +1,7 @@
 package io.github.teonistor.hc2k19.cards;
 
+import java.util.List;
+
 public enum Hand {
     RoyalFlush(4324L, 0.0032, 0.0032, "30,939 : 1"),
     StraightFlush(37260L, 0.0279, 0.0311, "3,589.6 : 1"),
@@ -21,5 +23,24 @@ public enum Hand {
         this.probability = probability;
         this.cumulativeProbability = cumulativeProbability;
         this.odds = odds;
+    }
+
+    private boolean matchesRoyalFlush(List<Card> cards) {
+        return cards.size() == 5
+                &&
+
+                cards.stream()
+                .map(Card::getSuit)
+                .distinct()
+                .count()==1L
+                &&
+
+                cards.stream()
+                .map(Card::getKind)
+                .sorted()
+                .map(Kind::getShortString)
+                .reduce(String::concat)
+                .orElse("")
+                .equals("10JQKA");
     }
 }
