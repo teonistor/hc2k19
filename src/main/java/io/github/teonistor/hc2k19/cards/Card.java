@@ -1,13 +1,13 @@
 package io.github.teonistor.hc2k19.cards;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableMap;
+import io.improbable.keanu.tensor.Tensor;
+import io.improbable.keanu.vertices.dbl.DoubleVertex;
+import io.improbable.keanu.vertices.dbl.nonprobabilistic.ConstantDoubleVertex;
+import io.improbable.keanu.vertices.generic.probabilistic.discrete.CategoricalVertex;
+
+import java.util.*;
+import java.util.function.*;
 
 import static io.github.teonistor.hc2k19.cards.Kind.*;
 import static io.github.teonistor.hc2k19.cards.Suit.*;
@@ -97,5 +97,12 @@ public enum Card {
             .map(i -> values()[i])
             .collect(toCollection(LinkedList::new))
             ::remove;
+    }
+
+    public static CategoricalVertex<Card, Tensor<Card>> getCategoricalVertex() {
+        final ImmutableMap.Builder<Card, DoubleVertex> builder = ImmutableMap.builder();
+        for (Card c : values())
+            builder.put(c, new ConstantDoubleVertex(1.0/values().length));
+        return new CategoricalVertex<>(builder.build());
     }
 }

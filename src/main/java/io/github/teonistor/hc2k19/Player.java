@@ -7,5 +7,6 @@ public interface Player {
     public void deal(Card a, Card b);
     public void reveal(Card c);
     public void announce (Player other, Action action);
-    public void takeTurn (Game state);
+    public void remind (int dolla);
+    public Action takeTurn ();
 }
