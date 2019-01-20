@@ -15,6 +15,11 @@ public class RandomPlayer implements Player {
     }
 
     @Override
+    public void beginPlay() {
+
+    }
+
+    @Override
     public void deal(Card c) {
         System.out.printf("%s was dealt %s%n", name, c);
     }
@@ -30,12 +35,18 @@ public class RandomPlayer implements Player {
     }
 
     @Override
-    public void remind(int dolla) {
+    public void endPlay(int dolla) {
         System.out.printf("%s has %s dolla%n", name, dolla);
     }
 
     @Override
     public BidAction takeTurn() {
+        try {
+            Thread.sleep(750);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         int r = random.nextInt(20);
         if (r < 1) return Fold;
         if (r > 15) return Raise;

@@ -81,6 +81,7 @@ public class Game {
         boolean blind = true;
 //        List<Player> activePlayers = Arrays.stream(players).filter(inGame::get).collect(toList()); // That's not what that is!
         activePlayers = new ArrayList<>(Arrays.asList(players));
+        activePlayers.forEach(Player::beginPlay);
 
         for (Round round : Round.values()) {
 

@@ -43,7 +43,7 @@ public class ProbabilisticPlayer implements Player {
     }
 
     @Override
-    public void remind(int dolla) {
+    public void endPlay(int dolla) {
 
     }
 
