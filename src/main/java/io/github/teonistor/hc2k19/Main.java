@@ -14,16 +14,19 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("poker.fxml"));
         primaryStage.setTitle("Poker - Texas Hold'em!");
         primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setMinWidth(800);
+        primaryStage.setMinHeight(600);
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 
 
     public static void main(String[] arg) {
 
-        new Game(3).play();
+//        new Game(3).play();
 
 //        new ProbabilisticPlayer();
 
-//        launch(arg);
+        launch(arg);
     }
 }
