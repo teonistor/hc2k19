@@ -1,6 +1,7 @@
 package io.github.teonistor.hc2k19.game;
 
 import io.github.teonistor.hc2k19.BidAction;
+import io.github.teonistor.hc2k19.Controller;
 import io.github.teonistor.hc2k19.Player;
 import io.github.teonistor.hc2k19.RandomPlayer;
 import io.github.teonistor.hc2k19.cards.Card;
@@ -32,7 +33,10 @@ public class Game {
         card2 = new HashMap<>();
         revealedCards = new ArrayList<>();
 
-        Arrays.setAll(players, i -> new RandomPlayer("Player " + i));
+        players[0] = new RandomPlayer("Bot 1");
+        players[1] = new RandomPlayer("Bot 2");
+        players[2] = Controller.instance;
+
         Arrays.stream(players).forEach(p -> {
 //            inGame.put(p, true);
             dolla.put(p, 0);

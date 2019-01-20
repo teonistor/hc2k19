@@ -5,58 +5,53 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171"
-            xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.teonistor.hc2k19.Controller">
     <left>
-        <AnchorPane minHeight="200.0" minWidth="200.0" prefHeight="400.0" prefWidth="200.0"
-                    BorderPane.alignment="CENTER">
+        <AnchorPane minHeight="200.0" minWidth="200.0" prefHeight="400.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="48.0" layoutY="346.0" mnemonicParsing="false" text="New Game" textAlignment="CENTER"/>
-                <Label contentDisplay="CENTER" disable="false" focusTraversable="false" layoutX="14.0" layoutY="13.0"
-                       prefHeight="56.0" prefWidth="205.0" text="Welcome to Texas Hold'em Poker" textAlignment="CENTER"
-                       visible="true" wrapText="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+                <Button layoutX="48.0" layoutY="346.0" mnemonicParsing="false" text="New Game" textAlignment="CENTER" />
+                <Label contentDisplay="CENTER" disable="false" focusTraversable="false" layoutX="14.0" layoutY="13.0" prefHeight="56.0" prefWidth="205.0" text="Welcome to Texas Hold'em Poker" textAlignment="CENTER" visible="true" wrapText="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
                     <font>
-                        <Font name="Garamond Bold" size="18.0"/>
+                        <Font name="Garamond Bold" size="18.0" />
                     </font>
                 </Label>
-                <Separator layoutX="-12.0" layoutY="72.0" minHeight="0.999908447265625" prefHeight="0.999908447265625"
-                           prefWidth="200.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0"/>
-                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="81.0" text="Choose an action"
-                       textAlignment="CENTER" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+                <Separator layoutX="-12.0" layoutY="72.0" minHeight="0.999908447265625" prefHeight="0.999908447265625" prefWidth="200.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" />
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="81.0" text="Choose an action" textAlignment="CENTER" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
                     <font>
-                        <Font name="Garamond" size="16.0"/>
+                        <Font name="Garamond" size="16.0" />
                     </font>
                 </Label>
-                <Button layoutX="9.0" layoutY="115.0" mnemonicParsing="false" prefWidth="54.0" text="Fold"/>
-                <Button layoutX="69.0" layoutY="115.0" mnemonicParsing="false" prefWidth="54.0" text="Raise"/>
-                <Button layoutX="131.0" layoutY="116.0" mnemonicParsing="false" prefWidth="54.0" text="Call"/>
-                <Slider layoutX="14.0" layoutY="166.0" max="0.0" minorTickCount="0" orientation="HORIZONTAL"
-                        showTickLabels="false" showTickMarks="false" snapToTicks="false" AnchorPane.leftAnchor="14.0"
-                        AnchorPane.rightAnchor="14.0"/>
+                <Button layoutX="9.0" layoutY="115.0" mnemonicParsing="false" onAction="#fold" prefWidth="54.0" text="Fold" />
+                <Button layoutX="69.0" layoutY="115.0" mnemonicParsing="false" onAction="#raise" prefWidth="54.0" text="Raise" />
+                <Button layoutX="131.0" layoutY="116.0" mnemonicParsing="false" onAction="#call" prefWidth="54.0" text="Call" />
+                <Slider layoutX="14.0" layoutY="166.0" max="0.0" minorTickCount="0" orientation="HORIZONTAL" showTickLabels="false" showTickMarks="false" snapToTicks="false" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
             </children>
         </AnchorPane>
     </left>
     <center>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="374.0"
-                    style="-fx-background-color: #319900; -fx-border-color: black; -fx-border-width: 2;"
-                    BorderPane.alignment="CENTER">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="374.0" style="-fx-background-color: #319900; -fx-border-color: black; -fx-border-width: 2;" BorderPane.alignment="CENTER">
             <children>
-                <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#333b68" height="148.0" layoutX="185.0"
-                           layoutY="432.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND"
-                           strokeType="INSIDE" strokeWidth="2.0" width="118.0" AnchorPane.bottomAnchor="12.0"
-                           AnchorPane.leftAnchor="185.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="432.0"/>
-                <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#333b68" height="148.0" layoutX="314.0"
-                           layoutY="434.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND"
-                           strokeType="INSIDE" strokeWidth="2.0" width="118.0"/>
+                <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#333b68" height="148.0" layoutX="185.0" layoutY="432.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="118.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="185.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="432.0" />
+                <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#333b68" height="148.0" layoutX="314.0" layoutY="434.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="118.0" />
+            <TextField fx:id="cardOnLeft" layoutX="196.0" layoutY="441.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent; -fx-text-inner-color: white;">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="cardOnRight" layoutX="326.0" layoutY="441.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent; -fx-text-inner-color: white;">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </TextField>
             </children>
             <BorderPane.margin>
-                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
+                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
             </BorderPane.margin>
         </AnchorPane>
     </center>

@@ -21,12 +21,14 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] arg) {
+    public static void main(String[] arg) throws InterruptedException {
+        new Thread(() -> launch(arg)).start();
 
-//        new Game(3).play();
+        Thread.sleep(1000);
+
+        new Game(3).play();
 
 //        new ProbabilisticPlayer();
 
-        launch(arg);
     }
 }
