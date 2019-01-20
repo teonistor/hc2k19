@@ -109,7 +109,7 @@ public enum Hand {
             .map(i -> cardOrders.get(i) - cardOrders.get(i+1))
             .mapToObj(i -> i==-1 || i==12) // 12 for A-2-... case
             .collect(toList());
-        return range(0, consecutiveness.size() - 4)
+        return range(0, consecutiveness.size() - 3)
             .mapToObj(i -> range(i, i + 4)
                 .mapToObj(consecutiveness::get)
                 .reduce(true, (a, b) -> a && b))
