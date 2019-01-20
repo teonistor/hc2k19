@@ -28,6 +28,11 @@ public class ProbabilisticPlayer implements Player {
     }
 
     @Override
+    public void beginPlay() {
+
+    }
+
+    @Override
     public void deal(Card c) {
 
     }

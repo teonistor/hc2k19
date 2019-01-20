@@ -1,102 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.teonistor.hc2k19.Controller">
-  <center>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="374.0" style="-fx-background-color: #319900; -fx-border-color: black; -fx-border-width: 2;" BorderPane.alignment="CENTER">
-      <children>
-        <Rectangle fx:id="cardLeft" arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="138.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="287.0" AnchorPane.topAnchor="436.0" />
-        <Rectangle fx:id="cardRight" arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="138.0" layoutX="311.0" layoutY="439.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0" />
-        <Rectangle fx:id="flop_1" arcHeight="10.0" arcWidth="10.0" height="138.0" layoutX="31.0" layoutY="201.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0">
-          <fill>
-            <Color blue="0.408" green="0.231" red="0.200" fx:id="x1" />
-          </fill>
-        </Rectangle>
-        <Rectangle id="flop_1" fx:id="flop_2" arcHeight="10.0" arcWidth="10.0" fill="$x1" height="138.0" layoutX="140.0" layoutY="201.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0" />
-        <Rectangle id="flop_1" fx:id="flop_3" arcHeight="10.0" arcWidth="10.0" fill="$x1" height="138.0" layoutX="249.0" layoutY="201.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0" />
-        <Rectangle id="flop_1" fx:id="turn" arcHeight="10.0" arcWidth="10.0" fill="$x1" height="138.0" layoutX="358.0" layoutY="201.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0" />
-        <Rectangle id="flop_1" fx:id="river" arcHeight="10.0" arcWidth="10.0" fill="$x1" height="138.0" layoutX="466.0" layoutY="202.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0" />
-        <Label layoutX="164.0" layoutY="149.0" text="Flop" textFill="WHITE">
-          <font>
-            <Font size="16.0" fx:id="x2" />
-          </font>
-        </Label>
-        <Label font="$x2" layoutX="500.0" layoutY="149.0" text="River" textFill="WHITE" />
-        <Label font="$x2" layoutX="394.0" layoutY="149.0" text="Turn" textFill="WHITE" />
-
-          <TextField fx:id="cardOnLeft" editable="false" layoutX="214.0" layoutY="441.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
-              <font>
-                  <Font name="System Bold" size="20.0" />
-              </font>
-          </TextField>
-          <TextField fx:id="cardOnRight" editable="false" layoutX="317.0" layoutY="441.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
-              <font>
-                  <Font name="System Bold" size="20.0" />
-              </font>
-          </TextField>
-            <TextField fx:id="cardFive" editable="false" layoutX="477.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="cardFour" editable="false" layoutX="369.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="cardThree" editable="false" layoutX="260.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="cardTwo" editable="false" layoutX="151.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="cardOne" editable="false" layoutX="42.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </TextField>
-
-      </children>
-      <BorderPane.margin>
-        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-      </BorderPane.margin>
-    </AnchorPane>
-  </center>
+<BorderPane id="BorderPane" fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="io.github.teonistor.hc2k19.Controller">
   <left>
     <AnchorPane minHeight="200.0" minWidth="200.0" prefHeight="400.0" prefWidth="200.0" BorderPane.alignment="CENTER">
       <children>
-        <Button layoutX="48.0" layoutY="346.0" mnemonicParsing="false" text="New Game" textAlignment="CENTER" />
+        <Button layoutX="57.0" layoutY="557.0" mnemonicParsing="false" text="New Game" textAlignment="CENTER" />
         <Label contentDisplay="CENTER" disable="false" focusTraversable="false" layoutY="13.0" prefHeight="56.0" prefWidth="205.0" text="Welcome to Texas Hold'em Poker" textAlignment="CENTER" visible="true" wrapText="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
-          <font> 
-            <Font name="Garamond Bold" size="18.0" />
+          <font>
+            <Font name="Garamond" size="20.0" />
           </font>
         </Label>
         <Separator layoutY="72.0" minHeight="0.999908447265625" prefHeight="0.999908447265625" prefWidth="200.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" />
         <Label alignment="CENTER" contentDisplay="CENTER" layoutY="81.0" text="Choose an action" textAlignment="CENTER" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
           <font>
-            <Font name="Garamond" size="16.0" />
+            <Font name="Garamond" size="16.0" fx:id="x3" />
           </font>
         </Label>
-        <Button layoutX="9.0" layoutY="115.0" mnemonicParsing="false" onAction="#fold" prefWidth="54.0" text="Fold" />
-        <Button layoutX="69.0" layoutY="115.0" mnemonicParsing="false" onAction="#raise" prefWidth="54.0" text="Raise" />
-        <Button layoutX="131.0" layoutY="116.0" mnemonicParsing="false" onAction="#call" prefWidth="54.0" text="Call" />
+        <Button layoutX="9.0" layoutY="115.0" mnemonicParsing="false" prefWidth="54.0" text="Fold" />
+        <Button layoutX="69.0" layoutY="115.0" mnemonicParsing="false" prefWidth="54.0" text="Raise" />
+        <Button layoutX="131.0" layoutY="116.0" mnemonicParsing="false" prefWidth="54.0" text="Call" />
         <Slider layoutY="178.0" max="100.0" minorTickCount="0" orientation="HORIZONTAL" showTickLabels="true" showTickMarks="false" snapToTicks="false" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+        <TextField layoutX="24.0" layoutY="291.0" prefHeight="18.0" prefWidth="144.0" />
+        <Label fx:id="status" font="$x3" layoutX="57.0" layoutY="262.0" text="Game Status" />
       </children>
     </AnchorPane>
   </left>
+  <right>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="592.0" prefWidth="580.0" style="-fx-background-color: #319900; -fx-border-color: black; -fx-border-width: 2;" BorderPane.alignment="CENTER">
+      <children>
+        <Rectangle fx:id="cardLeft" arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="138.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="287.0" AnchorPane.topAnchor="377.0" />
+        <Rectangle fx:id="cardRight" arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="138.0" layoutX="311.0" layoutY="380.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0" />
+        <Rectangle fx:id="flop_1" arcHeight="10.0" arcWidth="10.0" height="138.0" layoutX="31.0" layoutY="168.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0">
+          <fill>
+            <Color blue="0.408" green="0.231" red="0.200" fx:id="x1" />
+          </fill>
+        </Rectangle>
+        <Rectangle id="flop_1" fx:id="flop_2" arcHeight="10.0" arcWidth="10.0" fill="$x1" height="138.0" layoutX="140.0" layoutY="168.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0" />
+        <Rectangle id="flop_1" fx:id="flop_3" arcHeight="10.0" arcWidth="10.0" fill="$x1" height="138.0" layoutX="249.0" layoutY="168.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0" />
+        <Rectangle id="flop_1" fx:id="turn" arcHeight="10.0" arcWidth="10.0" fill="$x1" height="138.0" layoutX="358.0" layoutY="168.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0" />
+        <Rectangle id="flop_1" fx:id="river" arcHeight="10.0" arcWidth="10.0" fill="$x1" height="138.0" layoutX="466.0" layoutY="169.0" stroke="BLACK" strokeLineCap="SQUARE" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="104.0" />
+        <Label layoutX="164.0" layoutY="116.0" text="Flop" textFill="WHITE">
+          <font>
+            <Font size="16.0" fx:id="x2" />
+          </font>
+        </Label>
+        <Label font="$x2" layoutX="500.0" layoutY="116.0" text="River" textFill="WHITE" />
+        <Label font="$x2" layoutX="394.0" layoutY="116.0" text="Turn" textFill="WHITE" />
+      </children>
+      <BorderPane.margin>
+        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+      </BorderPane.margin>
+    </AnchorPane>
+  </right>
 </BorderPane>
