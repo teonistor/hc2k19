@@ -8,26 +8,27 @@ import static java.util.stream.Collectors.*;
 import static java.util.stream.IntStream.range;
 
 public enum Hand {
-    RoyalFlush(4324L, 0.0032, 0.0032, "30,939 : 1", Hand::matchesRoyalFlush),
-    StraightFlush(37260L, 0.0279, 0.0311, "3,589.6 : 1", Hand::matchesStraightFlush),
-    FourOfAKind(224848L, 0.168, 0.199, "594 : 1", Hand::matchesFourOfAKind),
-    FullHouse(3473184L, 2.60, 2.80, "37.5 : 1", Hand::matchesFullHouse),
-    Flush(4047644L, 3.03, 5.82, "32.1 : 1", Hand::matchesFlush),
-    Straight(6180020L, 4.62, 10.4, "20.6 : 1", Hand::matchesStraight),
-    ThreeOfAKind(6461620L, 4.83, 15.3, "19.7 : 1", Hand::matchesThreeOfAKind),
-    TwoPairs(31433400L, 23.5, 38.8, "3.26 : 1", Hand::matchesTwoPairs),
-    Pair(58627800L, 43.8, 82.6, "1.28 : 1", Hand::matchesPair),
-    HighCard(23294460L, 17.4, 100, "4.74 : 1", Hand::matchesHighCard);
+    RoyalFlush(4324L, 0.0032, 0.0032, 0.99, "30,939 : 1", Hand::matchesRoyalFlush),
+    StraightFlush(37260L, 0.0279, 0.0311, 0.9, "3,589.6 : 1", Hand::matchesStraightFlush),
+    FourOfAKind(224848L, 0.168, 0.199, 0.85, "594 : 1", Hand::matchesFourOfAKind),
+    FullHouse(3473184L, 2.60, 2.80, 0.75, "37.5 : 1", Hand::matchesFullHouse),
+    Flush(4047644L, 3.03, 5.82, 0.7, "32.1 : 1", Hand::matchesFlush),
+    Straight(6180020L, 4.62, 10.4, 0.65, "20.6 : 1", Hand::matchesStraight),
+    ThreeOfAKind(6461620L, 4.83, 15.3, 0.55, "19.7 : 1", Hand::matchesThreeOfAKind),
+    TwoPairs(31433400L, 23.5, 38.8, 0.4, "3.26 : 1", Hand::matchesTwoPairs),
+    Pair(58627800L, 43.8, 82.6, 0.25, "1.28 : 1", Hand::matchesPair),
+    HighCard(23294460L, 17.4, 100, 0.05, "4.74 : 1", Hand::matchesHighCard);
 
     private final long frequency;
-    private final double probability, cumulativeProbability;
+    private final double probability, cumulativeProbability, winningProbability;
     private final String odds;
     private final Predicate<List<Card>> matches;
 
-    Hand(long frequency, double probability, double cumulativeProbability, String odds, Predicate<List<Card>> matches) {
+    Hand(long frequency, double probability, double cumulativeProbability, double winningProbability, String odds, Predicate<List<Card>> matches) {
         this.frequency = frequency;
         this.probability = probability;
         this.cumulativeProbability = cumulativeProbability;
+        this.winningProbability = winningProbability; // Made up number
         this.odds = odds;
         this.matches = matches;
     }
@@ -147,5 +148,25 @@ public enum Hand {
 
     private static boolean matchesHighCard(List<Card> cards) {
         return true;
+    }
+
+    public long getFrequency() {
+        return frequency;
+    }
+
+    public double getProbability() {
+        return probability;
+    }
+
+    public double getCumulativeProbability() {
+        return cumulativeProbability;
+    }
+
+    public double getWinningProbability() {
+        return winningProbability;
+    }
+
+    public String getOdds() {
+        return odds;
     }
 }

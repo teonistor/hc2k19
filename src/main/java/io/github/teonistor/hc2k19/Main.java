@@ -22,13 +22,13 @@ public class Main extends Application {
 
 
     public static void main(String[] arg) throws InterruptedException {
-        new Thread(() -> launch(arg)).start();
+//        new Thread(() -> {launch(arg); System.exit(0);}).start(); // KEK LOL System.exit
 
-        Thread.sleep(1000); // KEK
+//        Thread.sleep(1000); // KEK
+//
+//        new Game(3).play();
 
-        new Game(3).play();
-
-//        new ProbabilisticPlayer();
+        new ProbabilisticPlayer();
 
     }
 }
