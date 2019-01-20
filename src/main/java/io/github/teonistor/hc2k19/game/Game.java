@@ -46,13 +46,16 @@ public class Game {
     public void play() {
         System.out.printf("A %d-player game has begun.%n%n", players.length);
 
+        Arrays.stream(players)
+                .forEach(p -> p.announce(dolla, 0, 0));
+
+
         for (int i=0;i<10;i++) {
             System.out.printf("Play %d dolla: %s%n", i, dolla);
             revealedCards.clear();
             playOne();
 
             // Analyse hands and see who tf won
-            // TODO assuming firt player :P
             Player winner = null;
             Hand winningHand = null;
             for (Player player : players) {
@@ -110,6 +113,9 @@ public class Game {
 
                 }
 
+                Arrays.stream(players)
+                    .forEach(p -> p.announce(dolla, currentBid.get(), bid.values().stream().mapToInt(ii -> ii).sum()));
+
                 if (activePlayers.size() == 1) {
                     return;
                 }
@@ -117,6 +123,7 @@ public class Game {
                 blind = false;
                 nextToBid = (nextToBid + 1) % activePlayers.size();
             }
+
 
 //            round.postBid(); // not good with the return above
         }
@@ -141,6 +148,7 @@ public class Game {
             throw new IllegalStateException("5 cards were already revealed");
         }
         revealedCards.add(card);
+        Arrays.stream(players).forEach(p -> p.reveal(card));
         System.out.printf("%s Has been revealed%n", card);
     }
 

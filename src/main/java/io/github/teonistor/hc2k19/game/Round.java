@@ -21,13 +21,11 @@ public enum Round {
             case Flop:
                 range(0,3).forEach(ignore -> {
                     final Card card = game.deck().get();
-                    activePlayers.forEach(p -> p.reveal(card));
                     game.revealCard(card);
                 });
                 break;
             default:
                 final Card card = game.deck().get();
-                activePlayers.forEach(p -> p.reveal(card));
                 game.revealCard(card);
         }
     }

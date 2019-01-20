@@ -5,6 +5,8 @@ import io.improbable.keanu.tensor.Tensor;
 import io.improbable.keanu.vertices.dbl.KeanuRandom;
 import io.improbable.keanu.vertices.generic.probabilistic.discrete.CategoricalVertex;
 
+import java.util.Map;
+
 public class ProbabilisticPlayer implements Player {
 
     public ProbabilisticPlayer() {
@@ -44,6 +46,11 @@ public class ProbabilisticPlayer implements Player {
 
     @Override
     public void announce(Player other, BidAction action) {
+
+    }
+
+    @Override
+    public void announce(Map<Player, Integer> dolla, int bid, int pot) {
 
     }
 

@@ -1,6 +1,8 @@
 package io.github.teonistor.hc2k19;
 
 import io.github.teonistor.hc2k19.cards.Card;
+
+import java.util.Map;
 import java.util.Random;
 import static io.github.teonistor.hc2k19.BidAction.*;
 
@@ -31,6 +33,11 @@ public class RandomPlayer implements Player {
 
     @Override
     public void announce(Player other, BidAction action) {
+
+    }
+
+    @Override
+    public void announce(Map<Player, Integer> dolla, int bid, int pot) {
 
     }
 
