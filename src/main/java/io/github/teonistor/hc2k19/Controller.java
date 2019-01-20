@@ -3,6 +3,7 @@ package io.github.teonistor.hc2k19;
 import io.github.teonistor.hc2k19.cards.Card;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import java.util.concurrent.atomic.AtomicReference;
@@ -12,6 +13,9 @@ import static java.util.Arrays.asList;
 public class Controller implements Player {
 
     public static Controller instance; // LOL KEK demo
+
+    static Color white = Color.valueOf("white"),
+                 blue  = Color.valueOf("#333a68");
 
     @FXML TextField cardOnLeft, cardOnRight, cardOne, cardTwo, cardThree, cardFour, cardFive;
     @FXML Rectangle cardLeft, cardRight, flop_1, flop_2, flop_3, turn, river;
@@ -37,6 +41,7 @@ public class Controller implements Player {
     @Override
     public void beginPlay() {
         asList(cardOnLeft, cardOnRight, cardOne, cardTwo, cardThree, cardFour, cardFive).forEach(tf -> tf.setText(""));
+        asList(flop_1, flop_2, flop_3, turn, river).forEach(rekt -> rekt.setFill(blue));
     }
 
     @Override
@@ -56,6 +61,12 @@ public class Controller implements Player {
             .findFirst()
             .orElseThrow(() -> new IllegalStateException(" Dude WTF"))
             .setText(c.toString());
+        asList(flop_1, flop_2, flop_3, turn, river)
+            .stream()
+            .filter(rekt -> rekt.getFill().equals(blue))
+            .findFirst()
+            .orElseThrow(() -> new IllegalStateException(" Dude WTF"))
+            .setFill(white);
     }
 
     @Override
