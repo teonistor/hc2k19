@@ -23,7 +23,7 @@ public class Game {
         players = new Player[] {
             new RandomPlayer("Bot 1"),
             new ProbabilisticPlayer(),
-            new RandomPlayer("Bot 2")
+            Controller.instance
         };
         dolla = new HashMap<>();
         bid = new HashMap<>();
