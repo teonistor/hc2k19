@@ -34,7 +34,7 @@ public class Game {
 
         Arrays.stream(players).forEach(p -> {
 //            inGame.put(p, true);
-            dolla.put(p, 0);
+            dolla.put(p, 100);
         });
     }
 
