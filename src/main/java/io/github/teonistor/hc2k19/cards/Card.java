@@ -84,8 +84,12 @@ public enum Card {
         return suit;
     }
 
-    public String toString() {
+    public String longString() {
         return String.format("%s of %s", kind, suit);
+    }
+
+    @Override public String toString() {
+        return suit.getSymbol() + kind.getShortString();
     }
 
     public static Supplier<Card> getShuffledDeck() {

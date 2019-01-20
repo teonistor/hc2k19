@@ -35,39 +35,39 @@
         <Label font="$x2" layoutX="500.0" layoutY="149.0" text="River" textFill="WHITE" />
         <Label font="$x2" layoutX="394.0" layoutY="149.0" text="Turn" textFill="WHITE" />
 
-          <TextField fx:id="cardOnLeft" layoutX="196.0" layoutY="441.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
+          <TextField fx:id="cardOnLeft" editable="false" layoutX="214.0" layoutY="441.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
               <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="System Bold" size="20.0" />
               </font>
           </TextField>
-          <TextField fx:id="cardOnRight" layoutX="317.0" layoutY="441.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
+          <TextField fx:id="cardOnRight" editable="false" layoutX="317.0" layoutY="441.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
               <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="System Bold" size="20.0" />
               </font>
           </TextField>
-            <TextField fx:id="cardFive" layoutX="477.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
+            <TextField fx:id="cardFive" editable="false" layoutX="477.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </TextField>
-            <TextField fx:id="cardFour" layoutX="369.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
+            <TextField fx:id="cardFour" editable="false" layoutX="369.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </TextField>
-            <TextField fx:id="cardThree" layoutX="260.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
+            <TextField fx:id="cardThree" editable="false" layoutX="260.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </TextField>
-            <TextField fx:id="cardTwo" layoutX="151.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
+            <TextField fx:id="cardTwo" editable="false" layoutX="151.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </TextField>
-            <TextField fx:id="cardOne" layoutX="42.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
+            <TextField fx:id="cardOne" editable="false" layoutX="42.0" layoutY="210.0" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: transparent;">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </TextField>
 
