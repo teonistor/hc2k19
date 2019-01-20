@@ -1,17 +1,12 @@
 package io.github.teonistor.hc2k19.game;
 
-import io.github.teonistor.hc2k19.BidAction;
-import io.github.teonistor.hc2k19.Controller;
-import io.github.teonistor.hc2k19.Player;
-import io.github.teonistor.hc2k19.RandomPlayer;
+import io.github.teonistor.hc2k19.*;
 import io.github.teonistor.hc2k19.cards.Card;
 import io.github.teonistor.hc2k19.cards.Hand;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
-
-import static java.util.stream.Collectors.toList;
 
 public class Game {
 
@@ -24,18 +19,18 @@ public class Game {
     private final List<Card> revealedCards;
     private List<Player> activePlayers;
 
-    public Game (final int playerCount) {
-        players = new Player[playerCount];
+    public Game() {
+        players = new Player[] {
+            new RandomPlayer("Bot 1"),
+            new ProbabilisticPlayer(),
+            new RandomPlayer("Bot 2")
+        };
         dolla = new HashMap<>();
         bid = new HashMap<>();
 //        inGame = new HashMap<>();
         card1 = new HashMap<>();
         card2 = new HashMap<>();
         revealedCards = new ArrayList<>();
-
-        players[0] = new RandomPlayer("Bot 1");
-        players[1] = new RandomPlayer("Bot 2");
-        players[2] = Controller.instance;
 
         Arrays.stream(players).forEach(p -> {
 //            inGame.put(p, true);
