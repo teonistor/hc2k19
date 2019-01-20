@@ -24,7 +24,7 @@ public class Main extends Application {
     public static void main(String[] arg) throws InterruptedException {
         new Thread(() -> launch(arg)).start();
 
-        Thread.sleep(1000);
+        Thread.sleep(1000); // KEK
 
         new Game(3).play();
 
