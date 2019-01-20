@@ -10,7 +10,7 @@ import static java.util.stream.IntStream.range;
 public enum Round {
     Initial, Flop, Turn, River;
 
-    public void preBid(Game game, List<Player> activePlayers) {
+    public void preBid(Game game, List<Player> activePlayers) { // -> lol demo kek
         switch (this) {
             case Initial:
                 for (Player p : activePlayers) {

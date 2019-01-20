@@ -41,8 +41,8 @@ public class Game {
     public void play() {
         System.out.printf("A %d-player game has begun.%n%n", players.length);
 
-        Arrays.stream(players)
-                .forEach(p -> p.announce(dolla, 0, 0));
+//        Arrays.stream(players)
+//                .forEach(p -> p.announce(dolla, 0, 0, new RandomPlayer("Test"), BidAction));
 
 
         for (int i=0;i<10;i++) {
@@ -109,7 +109,8 @@ public class Game {
                 }
 
                 Arrays.stream(players)
-                    .forEach(p -> p.announce(dolla, currentBid.get(), bid.values().stream().mapToInt(ii -> ii).sum()));
+                    .forEach(p -> p.announce(dolla, currentBid.get(),
+                            bid.values().stream().mapToInt(ii -> ii).sum(), currentPlayer, action));
 
                 if (activePlayers.size() == 1) {
                     return;

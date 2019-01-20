@@ -8,8 +8,6 @@ public interface Player {
     public void beginPlay();
     public void deal(Card c);
     public void reveal(Card c);
-    public void announce (Player other, BidAction action);
-    public void announce (Map<Player, Integer> dolla, int bid, int pot);
-    public void endPlay(int dolla);
+    public void announce (Map<Player, Integer> dolla, int bid, int pot,Player other, BidAction action);
     public BidAction takeTurn ();
 }

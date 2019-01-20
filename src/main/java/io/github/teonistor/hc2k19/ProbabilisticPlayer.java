@@ -93,17 +93,7 @@ public class ProbabilisticPlayer implements Player {
     }
 
     @Override
-    public void announce(Player other, BidAction action) {
-
-    }
-
-    @Override
-    public void announce(Map<Player, Integer> dolla, int bid, int pot) {
-
-    }
-
-    @Override
-    public void endPlay(int dolla) {
+    public void announce(Map<Player, Integer> dolla, int bid, int pot, Player other, BidAction action) {
 
     }
 
@@ -138,4 +128,5 @@ public class ProbabilisticPlayer implements Player {
     @Override public String toString () {
         return "Probabilisticus";
     }
+
 }

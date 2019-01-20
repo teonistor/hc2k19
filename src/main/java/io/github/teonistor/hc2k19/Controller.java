@@ -24,14 +24,17 @@ public class Controller implements Player {
 
     @FXML TextField cardOnLeft, cardOnRight, cardOne, cardTwo, cardThree, cardFour, cardFive;
     @FXML Rectangle cardLeft, cardRight, flop_1, flop_2, flop_3, turn, river;
-    @FXML Label bid, pot, meDolla, p1Name, p1Dolla, p2Name, p2Dolla, p3Name, p3Dolla;
+    @FXML Label bid, pot, meDolla, p1Name, p1Dolla, p2Name, p2Dolla, p3Name, p3Dolla, p1Action, p2Action, p3Action;
 
     private final AtomicReference<BidAction> action = new AtomicReference<>(); // LOL KEK demo
     private final Map<Player, Label> dollaLabels;
+    private final Map<Player, Label> actionLabels;
+
 
     public Controller() {
         instance = this;
         dollaLabels = new HashMap<>();
+        actionLabels = new HashMap<>();
     }
 
     public void fold() {
@@ -67,23 +70,18 @@ public class Controller implements Player {
             .stream()
             .filter(tf -> tf.getText().equals(""))
             .findFirst()
-            .orElseThrow(() -> new IllegalStateException(" Dude WTF"))
+            .orElseThrow(() -> new IllegalStateException("Error - card could not be revealed"))
             .setText(c.toString());
         asList(flop_1, flop_2, flop_3, turn, river)
             .stream()
             .filter(rekt -> rekt.getFill().equals(blue))
             .findFirst()
-            .orElseThrow(() -> new IllegalStateException(" Dude WTF"))
+            .orElseThrow(() -> new IllegalStateException("Error - card could not be revealed"))
             .setFill(white);
     }
 
     @Override
-    public void announce(Player other, BidAction action) {
-
-    }
-
-    @Override
-    public void announce(Map<Player, Integer> dolla, int bid, int pot) {
+    public void announce(Map<Player, Integer> dolla, int bid, int pot, Player other, BidAction action) {
         Platform.runLater(() -> {
             this.bid.setText("Bid: " + bid);
             this.pot.setText("$ " + pot);
@@ -93,28 +91,31 @@ public class Controller implements Player {
                     if (!dollaLabels.containsKey(p)) {
                         if (!dollaLabels.containsValue(p1Dolla)) {
                             dollaLabels.put(p, p1Dolla);
+                            actionLabels.put(p, p1Action);
                             p1Name.setText(p.toString());
                         } else if (!dollaLabels.containsValue(p2Dolla)) {
                             dollaLabels.put(p, p2Dolla);
+                            actionLabels.put(p, p2Action);
                             p2Name.setText(p.toString());
                         } else if (!dollaLabels.containsValue(p3Dolla)) {
                             dollaLabels.put(p, p3Dolla);
                             p3Name.setText(p.toString());
+                            actionLabels.put(p, p3Action);
                         }
                     }
                     if (dollaLabels.containsKey(p)) {
                         dollaLabels.get(p).setText(String.format("$%d", d));
+
                     }
                 } else {
                     meDolla.setText(String.format("$%d", d));
                 }
+
+                if(actionLabels.containsKey(other)) {
+                    actionLabels.get(other).setText(action.toString());
+                }
             });
         });
-    }
-
-    @Override
-    public void endPlay(int dolla) {
-
     }
 
     @Override
