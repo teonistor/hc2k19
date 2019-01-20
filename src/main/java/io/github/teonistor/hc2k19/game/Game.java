@@ -63,7 +63,9 @@ public class Game {
                 }
             }
 
-            System.out.printf("Play %d won by %s%n", i, winner);
+            final Player reallyWinner = winner; // TODO ugly
+            System.out.printf("Play %d won by %s%n", i, reallyWinner);
+            Arrays.stream(players).forEach(p -> p.declareWinnerOfPlay(reallyWinner));
             dolla.compute(winner, (p, d) -> d + bid.values().stream().mapToInt(ii -> ii).sum());
         }
 

@@ -10,7 +10,6 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import static io.github.teonistor.hc2k19.BidAction.*;
 import static java.util.Arrays.asList;
@@ -24,17 +23,20 @@ public class Controller implements Player {
 
     @FXML TextField cardOnLeft, cardOnRight, cardOne, cardTwo, cardThree, cardFour, cardFive;
     @FXML Rectangle cardLeft, cardRight, flop_1, flop_2, flop_3, turn, river;
-    @FXML Label bid, pot, meDolla, p1Name, p1Dolla, p2Name, p2Dolla, p3Name, p3Dolla, p1Action, p2Action, p3Action;
+    @FXML Label bid, pot, meDolla, p1Name, p1Dolla, p2Name, p2Dolla, p3Name, p3Dolla, p1Action, p2Action, p3Action,
+                p1Winner, p2Winner, p3Winner, meWinner;
 
     private final AtomicReference<BidAction> action = new AtomicReference<>(); // LOL KEK demo
     private final Map<Player, Label> dollaLabels;
     private final Map<Player, Label> actionLabels;
+    private final Map<Player, Label> winnerLabels;
 
 
     public Controller() {
         instance = this;
         dollaLabels = new HashMap<>();
         actionLabels = new HashMap<>();
+        winnerLabels = new HashMap<>();
     }
 
     public void fold() {
@@ -83,8 +85,8 @@ public class Controller implements Player {
     @Override
     public void announce(Map<Player, Integer> dolla, int bid, int pot, Player other, BidAction action) {
         Platform.runLater(() -> {
-            this.bid.setText("Bid: " + bid);
-            this.pot.setText("$ " + pot);
+            this.bid.setText("Bid: $ " + bid);
+            this.pot.setText("Pot: $ " + pot);
 
             dolla.forEach((p,d) -> {
                 if (p != this) {
@@ -92,15 +94,18 @@ public class Controller implements Player {
                         if (!dollaLabels.containsValue(p1Dolla)) {
                             dollaLabels.put(p, p1Dolla);
                             actionLabels.put(p, p1Action);
+                            winnerLabels.put(p, p1Winner);
                             p1Name.setText(p.toString());
                         } else if (!dollaLabels.containsValue(p2Dolla)) {
                             dollaLabels.put(p, p2Dolla);
                             actionLabels.put(p, p2Action);
+                            winnerLabels.put(p, p2Winner);
                             p2Name.setText(p.toString());
                         } else if (!dollaLabels.containsValue(p3Dolla)) {
                             dollaLabels.put(p, p3Dolla);
-                            p3Name.setText(p.toString());
                             actionLabels.put(p, p3Action);
+                            winnerLabels.put(p, p3Winner);
+                            p3Name.setText(p.toString());
                         }
                     }
                     if (dollaLabels.containsKey(p)) {
@@ -128,5 +133,26 @@ public class Controller implements Player {
             e.printStackTrace();
         }
         return ac;
+    }
+
+    @Override
+    public void declareWinnerOfPlay(Player p) {
+        Label winnerLabel = winnerLabels.containsKey(p) ?
+                winnerLabels.get(p)
+                : (this == p ? meWinner
+                :null);
+
+        // TODO ugly
+        if (winnerLabel != null) {
+            Platform.runLater(() -> winnerLabel.setVisible(true));
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Platform.runLater(() -> winnerLabel.setVisible(false));
+        }
     }
 }

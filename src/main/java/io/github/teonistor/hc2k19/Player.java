@@ -10,4 +10,5 @@ public interface Player {
     public void reveal(Card c);
     public void announce (Map<Player, Integer> dolla, int bid, int pot,Player other, BidAction action);
     public BidAction takeTurn ();
+    public void declareWinnerOfPlay(Player p);
 }

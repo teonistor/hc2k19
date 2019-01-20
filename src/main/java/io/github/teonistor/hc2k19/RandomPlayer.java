@@ -50,6 +50,11 @@ public class RandomPlayer implements Player {
         return Call;
     }
 
+    @Override
+    public void declareWinnerOfPlay(Player p) {
+
+    }
+
     @Override public String toString(){
         return name;
     }

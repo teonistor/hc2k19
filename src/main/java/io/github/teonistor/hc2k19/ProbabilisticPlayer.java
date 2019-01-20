@@ -108,6 +108,11 @@ public class ProbabilisticPlayer implements Player {
         }
     }
 
+    @Override
+    public void declareWinnerOfPlay(Player p) {
+
+    }
+
     private void observeAndRecord (BooleanVertex vertex, boolean value) {
         vertex.observe(value);
         observedVertices.push(vertex);
