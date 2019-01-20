@@ -1,6 +1,7 @@
 package io.github.teonistor.hc2k19;
 
 import io.github.teonistor.hc2k19.cards.Card;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -83,29 +84,31 @@ public class Controller implements Player {
 
     @Override
     public void announce(Map<Player, Integer> dolla, int bid, int pot) {
-        this.bid.setText("Bid: " + bid);
-        this.pot.setText("$ " + pot);
+        Platform.runLater(() -> {
+            this.bid.setText("Bid: " + bid);
+            this.pot.setText("$ " + pot);
 
-        dolla.forEach((p,d) -> {
-            if (p != this) {
-                if (!dollaLabels.containsKey(p)) {
-                    if (!dollaLabels.containsValue(p1Dolla)) {
-                        dollaLabels.put(p, p1Dolla);
-                        p1Name.setText(p.toString());
-                    } else if (!dollaLabels.containsValue(p2Dolla)) {
-                        dollaLabels.put(p, p2Dolla);
-                        p2Name.setText(p.toString());
-                    } else if (!dollaLabels.containsValue(p3Dolla)) {
-                        dollaLabels.put(p, p3Dolla);
-                        p3Name.setText(p.toString());
+            dolla.forEach((p,d) -> {
+                if (p != this) {
+                    if (!dollaLabels.containsKey(p)) {
+                        if (!dollaLabels.containsValue(p1Dolla)) {
+                            dollaLabels.put(p, p1Dolla);
+                            p1Name.setText(p.toString());
+                        } else if (!dollaLabels.containsValue(p2Dolla)) {
+                            dollaLabels.put(p, p2Dolla);
+                            p2Name.setText(p.toString());
+                        } else if (!dollaLabels.containsValue(p3Dolla)) {
+                            dollaLabels.put(p, p3Dolla);
+                            p3Name.setText(p.toString());
+                        }
                     }
+                    if (dollaLabels.containsKey(p)) {
+                        dollaLabels.get(p).setText(String.format("$%d", d));
+                    }
+                } else {
+                    meDolla.setText(String.format("$%d", d));
                 }
-                if (dollaLabels.containsKey(p)) {
-                    dollaLabels.get(p).setText(String.format("$%d", d));
-                }
-            } else {
-                meDolla.setText(String.format("$%d", d));
-            }
+            });
         });
     }
 
