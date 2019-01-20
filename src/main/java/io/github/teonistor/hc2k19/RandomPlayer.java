@@ -1,8 +1,8 @@
 package io.github.teonistor.hc2k19;
 
 import io.github.teonistor.hc2k19.cards.Card;
-
 import java.util.Random;
+import static io.github.teonistor.hc2k19.BidAction.*;
 
 public class RandomPlayer implements Player {
 
@@ -36,7 +36,10 @@ public class RandomPlayer implements Player {
 
     @Override
     public BidAction takeTurn() {
-        return BidAction.values()[random.nextInt(BidAction.values().length)];
+        int r = random.nextInt(20);
+        if (r < 1) return Fold;
+        if (r > 15) return Raise;
+        return Call;
     }
 
     @Override public String toString(){

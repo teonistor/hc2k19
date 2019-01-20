@@ -4,6 +4,7 @@ import io.github.teonistor.hc2k19.BidAction;
 import io.github.teonistor.hc2k19.Player;
 import io.github.teonistor.hc2k19.RandomPlayer;
 import io.github.teonistor.hc2k19.cards.Card;
+import io.github.teonistor.hc2k19.cards.Hand;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -14,16 +15,16 @@ import static java.util.stream.Collectors.toList;
 public class Game {
 
     private final Player[] players;
-    private final Supplier<Card> deck;
+    private Supplier<Card> deck;
 //    private final Map<Player, Boolean> inGame; // Not needed until we implement death by loss of all money
     private final Map<Player, Integer> dolla;
     private final Map<Player, Integer> bid;
     private final Map<Player, Card> card1, card2;
     private final List<Card> revealedCards;
+    private List<Player> activePlayers;
 
     public Game (final int playerCount) {
         players = new Player[playerCount];
-        deck = Card.getShuffledDeck();
         dolla = new HashMap<>();
         bid = new HashMap<>();
 //        inGame = new HashMap<>();
@@ -48,11 +49,19 @@ public class Game {
 
             // Analyse hands and see who tf won
             // TODO assuming firt player :P
-            Player winner = players[0];
+            Player winner = null;
+            Hand winningHand = null;
+            for (Player player : players) {
+                if (activePlayers.contains(player)) {
+                    Hand hand = Hand.bestHand(computeHand(player));
+                    if (winningHand == null || winningHand.compareTo(hand) < 0) {
+                        winningHand = hand;
+                        winner = player;
+                    }
+                }
+            }
 
-
-
-
+            System.out.printf("Play %d won by %s%n", i, winner);
             dolla.compute(winner, (p, d) -> d + bid.values().stream().mapToInt(ii -> ii).sum());
         }
 
@@ -60,13 +69,14 @@ public class Game {
     }
 
     public void playOne() {
+        deck = Card.getShuffledDeck();
         int nextToBid = 0;
         Arrays.stream(players).forEach(p -> bid.put(p, 0));
 
         final AtomicInteger currentBid = new AtomicInteger(5); // atomic because lambda
         boolean blind = true;
 //        List<Player> activePlayers = Arrays.stream(players).filter(inGame::get).collect(toList()); // That's not what that is!
-        List<Player> activePlayers = new ArrayList<>(Arrays.asList(players));
+        activePlayers = new ArrayList<>(Arrays.asList(players));
 
         for (Round round : Round.values()) {
 
@@ -127,5 +137,12 @@ public class Game {
         }
         revealedCards.add(card);
         System.out.printf("%s Has been revealed%n", card);
+    }
+
+    private List<Card> computeHand (Player winner) {
+        List<Card> hand = new ArrayList<>(revealedCards);
+        hand.add(card1.get(winner));
+        hand.add(card2.get(winner));
+        return hand;
     }
 }
